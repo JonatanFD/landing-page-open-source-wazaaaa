@@ -1,4 +1,4 @@
-
+/* General styles */
 * {
     margin: 0;
     padding: 0;
@@ -57,5 +57,45 @@ ul {
     &:hover {
         background-color: hsla(0, 0%, 0%, 0.80);
         color: white;
+    }
+}
+
+header {
+    border-bottom: 1px solid #D8D9DA;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    
+    .container {
+        margin: 0 auto;
+        height: 100%;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        width: 100%;
+        max-width: 1280px;
+        padding: 0 1rem;
+
+        h1,  .user-buttons {
+            display: flex;
+            flex-grow: 1;
+            flex-basis: 0;
+        }
+
+        nav > ul {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .user-buttons {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            justify-content: end;
+
+        }
+
     }
 }
