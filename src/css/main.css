@@ -5,7 +5,6 @@
     box-sizing: border-box;
 
     font-family: "Istok Web", sans-serif;
-    border-color: "#D8D9DA";
 }
 
 html, body {
@@ -16,7 +15,7 @@ html, body {
 a {
     text-decoration: none;
     color: inherit;
-    transition: color 0.3s ease;
+    transition: color 2ms ease-in-out;
     cursor: pointer;
 }
 
@@ -24,3 +23,39 @@ a:hover {
     color: #007bff;
 }
 
+
+ul {
+    list-style: none;
+}
+
+
+.header-button, .default-button {
+    padding: 0 12px;
+    height: 40px;
+    font-size: 14px;
+    font-weight: 400;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.outline-button {
+    border-radius: 999px;
+    border: 1px solid #D8D9DA;
+
+    &:hover {
+        background-color: #D8D9DA;
+        color: #000;
+    }
+}
+.primary-button {
+    background-color: #000;
+    color: white;
+    border-radius: 999px;
+
+    &:hover {
+        background-color: hsla(0, 0%, 0%, 0.80);
+        color: white;
+    }
+}
