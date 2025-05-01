@@ -45,5 +45,33 @@ const es = {
             "description": "Es gratis empezar. Solo ganamos cuando tú lo haces. Los fabricantes obtienen tarifas personalizadas.",
             "buttonLink": "Aprende más"
         }
-    }
+    },
+    "footer": {
+        "homePage": {
+            "title": "Página de inicio",
+            "community": "Comunidad",
+            "company": "Compañía"
+        },
+        "company": {
+            "title": "Compañía",
+            "about": "Acerca de",
+            "team": "Equipo",
+            "contactUs": "Contáctanos"
+        },
+        "community": {
+            "title": "Comunidad",
+            "faq": "FAQ",
+            "blog": "Blog",
+            "support": "Soporte"
+        },
+        "socialMedia": {
+            "title": "Redes sociales"
+        },
+        "bottom": {
+            "title": "Quri",
+            "description": "Tu espacio creativo te está esperando. <a href=\"#\">Inicia sesión </a>para comenzar",
+            "privacyPolicy": "Política de privacidad",
+            "termsOfService": "Términos de servicio"
+        }
+    }   
 }
