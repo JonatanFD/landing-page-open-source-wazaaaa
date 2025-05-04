@@ -4,7 +4,7 @@ const mobileMenuButtons = [...document.getElementsByClassName("mobile-menu-butto
 const headerNav = document.getElementById("header-nav");
 
 console.log(mobileMenuButtons);
-mobileMenuButtons.forEach(element => {
+mobileMenuButtons.forEach((element) => {
     element.addEventListener("click", () => {
         headerNav.toggleAttribute("isMobile")
     });

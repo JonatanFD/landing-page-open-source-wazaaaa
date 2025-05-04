@@ -47,5 +47,13 @@ function setLanguage(lang) {
     localStorage.setItem("lang", lang);
 }
 
+const languageButton = document.getElementById("language-button");
+languageButton.addEventListener("click", () => {
+    const currentLang = localStorage.getItem("lang");
+    const nextLang = AVAILABLE_LANGUAGES[(AVAILABLE_LANGUAGES.indexOf(currentLang) + 1) % AVAILABLE_LANGUAGES.length];
+    languageButton.innerHTML = nextLang === "en" ? "EN" : "ES";
+    setLanguage(nextLang);
+});
+
 
 setLanguage(DEFAULT_LANGUAGE)
