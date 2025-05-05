@@ -1,59 +1,56 @@
-
 const AVAILABLE_LANGUAGES = ["en", "es"];
-const LANGUAGE_DICTIONARY = {
-    en,
-    es,
-}
+const LANGUAGE_DICTIONARY = { en, es };
 const DEFAULT_LANGUAGE = "es";
 
+const languageButton = document.getElementById("language-button");
 
 function changeLanguage(lang) {
-
     if (!AVAILABLE_LANGUAGES.includes(lang)) {
         console.error(`Language ${lang} is not supported.`);
         return;
     }
 
     const language = LANGUAGE_DICTIONARY[lang];
-
     const i18nElements = document.querySelectorAll("[i18n]");
-
-    console.log("CURRENT DICTIONARY", language); 
 
     i18nElements.forEach((element) => {
         const key = element.getAttribute("i18n");
-
         const path = key.split(".");
 
-        const value = path.reduce((acc, part) => {
-            if (acc && acc[part] !== undefined) {
-                return acc[part];
-            }
-            return null;
-        }, language);
+        const value = path.reduce((acc, part) => acc?.[part], language);
 
-        if (value) {
-            element.innerHTML = value;
-        }
+        element.innerHTML = value || `[${key}]`; // fallback visible
     });
 
-    console.log(i18nElements);
+    // Update language button label
+    const nextLang = getNextLanguage(lang);
+    languageButton.textContent = nextLang.toUpperCase();
+    languageButton.setAttribute("aria-label", `Switch to ${nextLang.toUpperCase()}`);
 
+    console.log("Language set to:", lang);
+}
+
+function getNextLanguage(currentLang) {
+    const currentIndex = AVAILABLE_LANGUAGES.indexOf(currentLang);
+    return AVAILABLE_LANGUAGES[(currentIndex + 1) % AVAILABLE_LANGUAGES.length];
 }
 
 function setLanguage(lang) {
-    const currentLang = localStorage.getItem("lang") || lang;
-    changeLanguage(currentLang);
     localStorage.setItem("lang", lang);
+    changeLanguage(lang);
 }
 
-const languageButton = document.getElementById("language-button");
+function initLanguage() {
+    const savedLang = localStorage.getItem("lang");
+    const initialLang = AVAILABLE_LANGUAGES.includes(savedLang) ? savedLang : DEFAULT_LANGUAGE;
+    changeLanguage(initialLang);
+}
+
 languageButton.addEventListener("click", () => {
-    const currentLang = localStorage.getItem("lang");
-    const nextLang = AVAILABLE_LANGUAGES[(AVAILABLE_LANGUAGES.indexOf(currentLang) + 1) % AVAILABLE_LANGUAGES.length];
-    languageButton.innerHTML = nextLang === "en" ? "EN" : "ES";
+    const currentLang = localStorage.getItem("lang") || DEFAULT_LANGUAGE;
+    const nextLang = getNextLanguage(currentLang);
     setLanguage(nextLang);
 });
 
-
-setLanguage(DEFAULT_LANGUAGE)
+// Initialize on load
+initLanguage();
